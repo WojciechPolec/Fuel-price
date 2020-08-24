@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<HEAD>
+    <meta charset="UTF-8">
+    <link href="kaskada.css" rel="stylesheet" type="text/css" />
+    <title> Stacja paliw </title>
+</HEAD>
+
+<BODY>
+    <FORM method="POST" action="">
+               
+        <fieldset>
+                <legend>STACJA PALIW</legend>
+                <div class="main">
+                        <div class="wprowadz">
+                        <label>Cena paliwa (za 1 litr) </label>
+                        <input type="text" size="25" id="cena_paliwa" name="cena_paliwa" autocomplete="off" >
+                        </div>
+                            <label>Ustalona cena dotyczy:</label>
+                            <select id="lista">
+                                    <option id="one" value="1">Pb95</option>
+                                    <option id="two" value="2">Pb98</option>
+                                    <option id="three" value="3">ON</option>
+                                    <option id="four" value="4">LPG</option>
+                            </select>
+                            <div class="aktualne_ceny">
+                                <label>Pb 95: Aktualna cena za 1 litr:</label>
+                                <input type="text" size="25" id="pb95" name="pb95" autocomplete="off" readonly><br>
+                                <label>Pb 98: Aktualna cena za 1 litr:</label>
+                                <input type="text" size="25" id="pb98" name="pb98" autocomplete="off" readonly  ><br>
+                                <label>ON: Aktualna cena za 1 litr:</label>
+                                <input type="text" size="25" id="on" name="on" autocomplete="off" readonly><br>
+                                <label>LPG: Aktualna cena za 1 litr:</label>
+                                <input type="text" size="25" id="lpg" name="lpg" autocomplete="off" readonly><br>
+                                </div><br>
+                            <div class="tankowanie">
+                                <label>Prognozowane tankowanie (w litrach):</label>
+                                <input type="text" size="25" id="prg" name="prg" autocomplete="off" ><br>
+
+                                <label>Pb 95</label><input type="radio" id="rd1" name="radio" value="">
+                                <label>Pb 98</label><input type="radio" id="rd2" name="radio" value="">
+                                <label>ON</label><input type="radio" id="rd3" name="radio" value="">
+                                <label>LPG</label><input type="radio" id="rd4" name="radio" value="">
+                            </div><br>
+                            <div class="wyniki">
+                            <label>Cena paliwa (łącznie):</label>
+                                <input type="text" size="25" id="cena_laczna" name="cena_laczna" autocomplete="off" ><br>
+                                <input type="button" name="btns" id="btn" value="Oblicz">
+                            </div>
+                        </div>
+                   
+                </fieldset>
+            </FORM>
+                     
+<script language="JavaScript" type="text/javascript">
+function paliwoStatus(){
+var cena_paliwa_litr=parseFloat(document.getElementById('cena_paliwa').value);
+var listEl = document.getElementById('lista');
+var cena_dotyczy=parseFloat(listEl.options[listEl.selectedIndex].value);
+
+if(cena_dotyczy==1){
+    document.getElementById('pb95').value=parseFloat(cena_paliwa_litr);
+}
+if(cena_dotyczy==2){
+    document.getElementById('pb98').value=parseFloat(cena_paliwa_litr);
+}
+if(cena_dotyczy==3){
+    document.getElementById('on').value=parseFloat(cena_paliwa_litr);
+}
+if(cena_dotyczy==4){
+    document.getElementById('lpg').value=parseFloat(cena_paliwa_litr);
+}
+}
+
+function suma(){
+var koszt;
+
+if(document.getElementById('rd1').checked){
+        koszt=(parseFloat(document.getElementById('pb95').value))*(parseFloat(document.getElementById('prg').value));
+        document.getElementById('cena_laczna').value=parseFloat(koszt);
+}
+if(document.getElementById('rd2').checked){
+        koszt=koszt=(parseFloat(document.getElementById('pb98').value))*(parseFloat(document.getElementById('prg').value));
+        document.getElementById('cena_laczna').value=parseFloat(koszt);
+}
+if(document.getElementById('rd3').checked){
+        koszt=koszt=(parseFloat(document.getElementById('on').value))*(parseFloat(document.getElementById('prg').value));
+        document.getElementById('cena_laczna').value=parseFloat(koszt);
+}
+if(document.getElementById('rd4').checked){
+        koszt=koszt=(parseFloat(document.getElementById('lpg').value))*(parseFloat(document.getElementById('prg').value));
+        document.getElementById('cena_laczna').value=parseFloat(koszt);
+}
+}
+
+
+
+var gzk = document.getElementById('btn');
+gzk.addEventListener('click', paliwoStatus);
+
+var gzk2 = document.getElementById('btn');
+gzk2.addEventListener('click', suma);
+
+
+
+
+
+</script>
+                                
+                        
+    
+                       
+
+</BODY>
+
+
+
+</html>
+
+
+
+

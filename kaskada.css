@@ -1,0 +1,12 @@
+fieldset{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.main{
+    text-align: center;
+}
+fieldset legend{
+    margin-left: auto;
+    margin-right: auto;
+}
